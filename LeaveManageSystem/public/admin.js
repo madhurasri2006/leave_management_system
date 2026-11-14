@@ -1,4 +1,6 @@
 
+const API_URL = 'https://leave-management-system-mh1o.onrender.com';
+
 const token = localStorage.getItem('token');
 
 if (!token || localStorage.getItem('role') !== 'admin') {
@@ -16,7 +18,6 @@ function getToday() {
 
 // Update dashboard summary
 function updateSummary(leaves) {
-
     const totalApplied = leaves.length;
 
     const accepted = leaves.filter(
@@ -29,7 +30,6 @@ function updateSummary(leaves) {
 
     const today = getToday();
 
-    // Count distinct employees who have approved leave today
     const employeesOnLeave = new Set(
         leaves
             .filter(leave =>
@@ -49,7 +49,7 @@ function updateSummary(leaves) {
 // Load all leave applications
 async function loadLeaves() {
     try {
-        const response = await fetch('/api/leaves', {
+        const response = await fetch(`${API_URL}/api/leaves`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -61,7 +61,6 @@ async function loadLeaves() {
             throw new Error(leaves.message || 'Could not load leave applications');
         }
 
-        // Update all four summary counts
         updateSummary(leaves);
 
         leaveList.replaceChildren();
@@ -93,7 +92,6 @@ async function loadLeaves() {
             card.append(heading, email, details, reason, status);
 
             if (leave.status === 'Pending') {
-
                 const approve = document.createElement('button');
                 approve.textContent = 'Approve';
 
@@ -123,7 +121,7 @@ async function loadLeaves() {
 // Approve or reject leave application
 async function updateLeaveStatus(id, status) {
     try {
-        const response = await fetch(`/api/leaves/${id}`, {
+        const response = await fetch(`${API_URL}/api/leaves/${id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -140,7 +138,6 @@ async function updateLeaveStatus(id, status) {
 
         alert(`Leave status updated to ${status}`);
 
-        // Refresh applications and summary counts
         await loadLeaves();
 
     } catch (error) {

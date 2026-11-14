@@ -1,4 +1,6 @@
 
+const API_URL = 'https://leave-management-system-mh1o.onrender.com';
+
 const registerForm = document.getElementById('registerForm');
 const message = document.getElementById('message');
 
@@ -13,7 +15,7 @@ registerForm.addEventListener('submit', async (event) => {
     };
 
     try {
-        const response = await fetch('/api/auth/register', {
+        const response = await fetch(`${API_URL}/api/auth/register`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

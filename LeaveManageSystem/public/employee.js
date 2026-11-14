@@ -1,4 +1,6 @@
 
+const API_URL = 'https://leave-management-system-mh1o.onrender.com';
+
 const token = localStorage.getItem('token');
 
 if (!token || localStorage.getItem('role') !== 'employee') {
@@ -31,7 +33,7 @@ setMinimumDates();
 // Load only the logged-in employee's leave applications
 async function loadMyLeaves() {
     try {
-        const response = await fetch('/api/leaves/my-leaves', {
+        const response = await fetch(`${API_URL}/api/leaves/my-leaves`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -43,7 +45,6 @@ async function loadMyLeaves() {
             throw new Error(leaves.message || 'Could not load your applications');
         }
 
-        // Update summary counts
         document.getElementById('totalMyLeaves').textContent = leaves.length;
 
         document.getElementById('pendingMyLeaves').textContent =
@@ -116,7 +117,7 @@ leaveForm.addEventListener('submit', async (event) => {
     };
 
     try {
-        const response = await fetch('/api/leaves', {
+        const response = await fetch(`${API_URL}/api/leaves`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -136,7 +137,6 @@ leaveForm.addEventListener('submit', async (event) => {
         leaveForm.reset();
         setMinimumDates();
 
-        // Refresh employee leave list
         await loadMyLeaves();
 
     } catch (error) {
