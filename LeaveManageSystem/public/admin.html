@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Admin Dashboard</h1>
+        <p>Manage Employee Leave Applications</p>
+        <button type="button" onclick="logout()">Logout</button>
+    </header>
+
+    <main>
+
+        <!-- Leave Summary -->
+        <section class="leave-container">
+            <h2>Leave Summary</h2>
+
+            <div class="summary-container">
+
+                <div class="summary-card">
+                    <h3>Total Applied</h3>
+                    <p id="totalApplied">0</p>
+                </div>
+
+                <div class="summary-card">
+                    <h3>Accepted</h3>
+                    <p id="totalAccepted">0</p>
+                </div>
+
+                <div class="summary-card">
+                    <h3>Rejected</h3>
+                    <p id="totalRejected">0</p>
+                </div>
+
+                <div class="summary-card">
+                    <h3>On Leave Today</h3>
+                    <p id="onLeaveToday">0</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- All Leave Applications -->
+        <section class="leave-container">
+            <h2>All Leave Applications</h2>
+
+            <div id="leaveList">
+                <p>Loading leave applications...</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Leave Management System | FSWD Lab Experiment</p>
+    </footer>
+
+    <script src="admin.js"></script>
+
+    <script>
+        function logout() {
+            localStorage.removeItem('token');
+            localStorage.removeItem('role');
+            localStorage.removeItem('name');
+
+            window.location.href = 'admin-login.html';
+        }
+    </script>
+
+</body>
+</html>

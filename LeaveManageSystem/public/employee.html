@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Employee Dashboard</h1>
+        <p>Employee Leave Application Portal</p>
+        <button type="button" onclick="logout()">Logout</button>
+    </header>
+
+    <main>
+
+        <section class="form-container">
+
+            <h2>Apply for Leave</h2>
+
+            <form id="leaveForm">
+
+                <label for="leaveType">Leave Type</label>
+
+                <select id="leaveType" name="leaveType" required>
+                    <option value="">Select Leave Type</option>
+                    <option value="Casual Leave">Casual Leave</option>
+                    <option value="Medical Leave">Medical Leave</option>
+                    <option value="Earned Leave">Earned Leave</option>
+                </select>
+
+                <label for="startDate">Start Date</label>
+                <input type="date" id="startDate" name="startDate" required>
+
+                <label for="endDate">End Date</label>
+                <input type="date" id="endDate" name="endDate" required>
+
+                <label for="reason">Reason for Leave</label>
+                <textarea
+                    id="reason"
+                    name="reason"
+                    placeholder="Enter your reason"
+                    required></textarea>
+
+                <button type="submit">Submit Application</button>
+
+            </form>
+
+        </section>
+
+        <!-- Employee Leave History -->
+        <section class="form-container">
+
+            <h2>My Leave Applications</h2>
+
+            <div id="leaveSummary">
+                <p>Total Applications: <span id="totalMyLeaves">0</span></p>
+                <p>Pending: <span id="pendingMyLeaves">0</span></p>
+                <p>Approved: <span id="approvedMyLeaves">0</span></p>
+                <p>Rejected: <span id="rejectedMyLeaves">0</span></p>
+            </div>
+
+            <div id="myLeaveList">
+                Loading your applications...
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Leave Management System | FSWD Lab Experiment</p>
+    </footer>
+
+    <script src="employee.js"></script>
+
+    <script>
+        function logout() {
+            localStorage.removeItem('token');
+            localStorage.removeItem('role');
+            localStorage.removeItem('name');
+
+            window.location.href = 'employee-login.html';
+        }
+    </script>
+
+</body>
+</html>

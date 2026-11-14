@@ -1,0 +1,248 @@
+
+/* ===== General Reset ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===== Body ===== */
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f4f6f8;
+    color: #263445;
+    line-height: 1.6;
+}
+
+/* ===== Header ===== */
+header {
+    background: #1e293b;
+    color: #ffffff;
+    text-align: center;
+    padding: 30px 15px;
+    border-bottom: 4px solid #0f766e;
+}
+
+header h1 {
+    margin-bottom: 8px;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+header p {
+    color: #cbd5e1;
+}
+
+/* ===== Main Content ===== */
+main {
+    max-width: 1100px;
+    margin: 35px auto;
+    padding: 0 20px;
+}
+
+/* ===== Sections ===== */
+.form-container,
+.leave-container {
+    background: #ffffff;
+    padding: 28px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
+}
+
+h2 {
+    color: #1e293b;
+    margin-bottom: 20px;
+    font-size: 21px;
+    font-weight: 600;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+/* ===== Forms ===== */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+label {
+    font-weight: 600;
+    margin-top: 5px;
+    color: #334155;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 15px;
+    font-family: inherit;
+    background: #ffffff;
+    color: #263445;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #0f766e;
+    box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.10);
+}
+
+textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+/* ===== Buttons ===== */
+button {
+    background: #0f766e;
+    color: #ffffff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 10px;
+    transition: background 0.2s ease;
+}
+
+button:hover {
+    background: #115e59;
+}
+
+/* ===== Dashboard Summary Cards ===== */
+.summary-container {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 20px;
+}
+
+.summary-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-top: 4px solid #0f766e;
+    border-radius: 9px;
+    padding: 22px 15px;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+    transition: transform 0.2s ease;
+}
+
+.summary-card:hover {
+    transform: translateY(-3px);
+}
+
+.summary-card h3 {
+    color: #64748b;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.summary-card p {
+    color: #1e293b;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+/* Subtle card distinctions */
+.summary-card:nth-child(1) {
+    border-top-color: #475569;
+}
+
+.summary-card:nth-child(2) {
+    border-top-color: #0f766e;
+}
+
+.summary-card:nth-child(3) {
+    border-top-color: #b45353;
+}
+
+.summary-card:nth-child(4) {
+    border-top-color: #2563a6;
+}
+
+/* ===== Leave Application Cards ===== */
+.leave-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-left: 4px solid #0f766e;
+    border-radius: 9px;
+    padding: 20px;
+    margin-bottom: 16px;
+    overflow-wrap: anywhere;
+}
+
+.leave-card h3 {
+    color: #1e293b;
+    margin-bottom: 8px;
+    font-size: 18px;
+}
+
+.leave-card p {
+    margin-bottom: 5px;
+    color: #475569;
+}
+
+.leave-card button {
+    margin-right: 10px;
+}
+
+/* Reject Button */
+.leave-card button:last-child {
+    background: #b45353;
+}
+
+.leave-card button:last-child:hover {
+    background: #963f3f;
+}
+
+/* ===== Footer ===== */
+footer {
+    background: #1e293b;
+    color: #cbd5e1;
+    text-align: center;
+    padding: 18px;
+    margin-top: 30px;
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 750px) {
+    .summary-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 24px;
+    }
+
+    main {
+        padding: 0 12px;
+        margin: 18px auto;
+    }
+
+    .form-container,
+    .leave-container {
+        padding: 18px;
+    }
+
+    .summary-card {
+        padding: 18px 10px;
+    }
+}
+
+@media (max-width: 400px) {
+    .summary-container {
+        grid-template-columns: 1fr;
+    }
+}
